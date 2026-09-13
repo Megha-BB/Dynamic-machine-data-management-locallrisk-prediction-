@@ -2,6 +2,10 @@
 
 A local machine registry demonstrating dynamic fields, CRUD records, and a Python ML risk prediction flow. No cloud AI services or external AI APIs are used.
 
+## Web UI
+
+![ForgeSight machine registry dashboard](screenshots/forge-sight-ui.png)
+
 ## Stack
 
 - **Backend:** Python, FastAPI, SQLite
