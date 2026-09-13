@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ForgeSight | Machine Registry</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand"><span class="brand-mark">F</span><span>FORGESIGHT</span></div>
+      <div class="sidebar-label">Operations console</div>
+      <nav><a class="nav-item active" href="#machines"><span>▦</span> Machines</a><a class="nav-item" href="#fields"><span>⌘</span> Field schema</a><a class="nav-item" href="#prediction"><span>◒</span> Risk model</a></nav>
+      <div class="sidebar-foot"><span class="status-dot"></span><span>LOCAL SYSTEM</span><small>Python inference online</small></div>
+    </aside>
+    <main class="main-content">
+      <header class="topbar"><div><div class="eyebrow">PLANT 01 / ASSET INTELLIGENCE</div><h1>Machine registry</h1></div><div class="topbar-meta"><span id="clock"></span><span class="online-pill">● LIVE</span></div></header>
+      <section class="stats"><div class="stat"><span class="stat-label">Registered machines</span><strong id="machine-count">—</strong><span class="stat-note">Tracked assets</span></div><div class="stat"><span class="stat-label">Configured fields</span><strong id="field-count">—</strong><span class="stat-note">Dynamic schema</span></div><div class="stat accent-stat"><span class="stat-label">Model status</span><strong>READY</strong><span class="stat-note">Local Python / v1.0</span></div></section>
+      <section class="workspace" id="machines"><div class="section-heading"><div><div class="eyebrow">01 / MACHINE RECORDS</div><h2>Asset overview</h2></div><button class="primary-btn" id="new-machine-btn">＋ New machine</button></div><div class="table-wrap"><table><thead id="machine-head"></thead><tbody id="machine-body"></tbody></table><div class="empty" id="machine-empty" hidden>No machines registered yet.</div></div></section>
+      <section class="lower-grid"><div class="panel" id="fields"><div class="panel-heading"><div><div class="eyebrow">02 / CONFIGURATION</div><h2>Field schema</h2></div><button class="icon-btn" id="add-field-btn" title="Add field">＋</button></div><p class="muted">Fields are stored as configuration and appear instantly in every machine form.</p><div id="field-list" class="field-list"></div></div><div class="panel prediction-panel" id="prediction"><div class="eyebrow">03 / LOCAL INFERENCE</div><h2>Risk prediction</h2><p class="muted">Select an asset to run the Python model against its operating readings.</p><select id="prediction-machine" class="select-input"><option value="">Choose a machine...</option></select><button class="secondary-btn" id="predict-btn">Run prediction <span>→</span></button><div class="prediction-result" id="prediction-result" hidden><span class="result-kicker">PREDICTED RISK</span><strong id="risk-level">—</strong><div class="confidence"><span>Confidence</span><span id="confidence">—</span></div><div class="model-note">Uses Temperature, Pressure &amp; Vibration</div></div></div></section>
+    </main>
+  </div>
+  <dialog id="machine-dialog"><form method="dialog" id="machine-form"><div class="dialog-head"><div><div class="eyebrow">MACHINE RECORD</div><h2 id="machine-dialog-title">New machine</h2></div><button class="close-btn" value="cancel">×</button></div><div id="machine-fields" class="form-grid"></div><div class="dialog-actions"><button class="secondary-btn" value="cancel">Cancel</button><button class="primary-btn" id="save-machine-btn" value="default">Save machine</button></div></form></dialog>
+  <dialog id="field-dialog"><form method="dialog" id="field-form"><div class="dialog-head"><div><div class="eyebrow">SCHEMA EDITOR</div><h2>Add machine field</h2></div><button class="close-btn" value="cancel">×</button></div><label>Field name<input id="field-name" required placeholder="e.g. Humidity"></label><label>Field type<select id="field-type"><option value="text">Text</option><option value="number">Number</option><option value="dropdown">Dropdown</option></select></label><label class="check-label"><input type="checkbox" id="field-required"> Required field</label><label id="options-wrap" hidden>Dropdown options<input id="field-options" placeholder="Low, Medium, High"></label><div class="dialog-actions"><button class="secondary-btn" value="cancel">Cancel</button><button class="primary-btn" value="default">Add field</button></div></form></dialog>
+  <script src="/static/app.js"></script>
+</body>
+</html>
